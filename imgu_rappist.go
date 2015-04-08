@@ -4,14 +4,11 @@ import (
 	"bitbucket.org/liamstask/go-imgur/imgur"
 
 	"math/rand"
+	"os"
 )
 
-const (
-	//clientID     = os.Getenv("IMGUR_CLIENT_ID")
-	//clientSecret = os.Getenv("IMGUR_SECRET_ID")
-	clientID     = "e29200a15c6a770"
-	clientSecret = "b7a486c0a691fd8a34d026045d67a5fa6e4e18f2"
-)
+var clientID = os.Getenv("IMGUR_CLIENT_ID")
+var clientSecret = os.Getenv("IMGUR_SECRET_ID")
 
 var client = imgur.NewClient(nil, clientID, clientSecret)
 
