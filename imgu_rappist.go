@@ -7,6 +7,8 @@ import (
 )
 
 const (
+	//clientID     = os.Getenv("IMGUR_CLIENT_ID")
+	//clientSecret = os.Getenv("IMGUR_SECRET_ID")
 	clientID     = "e29200a15c6a770"
 	clientSecret = "b7a486c0a691fd8a34d026045d67a5fa6e4e18f2"
 )
@@ -17,7 +19,13 @@ func ImgurSearcher(image string) (url string) {
 	results, err := client.Gallery.Search(image, "top", 0)
 
 	if err != nil {
-		panic(err)
+		url = "http://s.imgur.com/images/OverCapacity_700.png"
+		return
+	}
+
+	if len(results) <= 0 {
+		url = "http://s.imgur.com/images/OverCapacity_700.png"
+		return
 	}
 
 	image_index := rand.Intn(len(results))
@@ -41,6 +49,6 @@ func getFirstImage(images []imgur.GalleryImageAlbum) (url string) {
 			return
 		}
 	}
-	url = "http://i.imgur.com/etjgJ2D.jpg"
+	url = "http://s.imgur.com/images/OverCapacity_700.png"
 	return
 }
