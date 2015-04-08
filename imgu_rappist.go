@@ -23,9 +23,24 @@ func ImgurSearcher(image string) (url string) {
 	image_index := rand.Intn(len(results))
 	images := results[image_index]
 	if images.IsAlbum {
-		url = images.Images[0].Link
+		if len(images.Images) > 0 {
+			url = images.Images[0].Link
+		} else {
+			url = getFirstImage(results)
+		}
 	} else {
 		url = images.Link
 	}
+	return
+}
+
+func getFirstImage(images []imgur.GalleryImageAlbum) (url string) {
+	for _, image := range images {
+		if !image.IsAlbum {
+			url = image.Link
+			return
+		}
+	}
+	url = "http://i.imgur.com/etjgJ2D.jpg"
 	return
 }
