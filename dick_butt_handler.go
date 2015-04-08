@@ -20,7 +20,7 @@ var dickTemplate = `
 		</style>
 	</head>
 	<body style="background-image: url('{{.ImgurSource}}'); background-size: cover; background-position: center;">
-	<img style="top:{{.Top}}%; left:{{.Bottom}}%" src="/assets/dickbutt.png"/>
+	<a href='{{.Place}}'><img style="top:{{.Top}}%; left:{{.Bottom}}%" src="/assets/dickbutt.png"/></a>
 	</body>
 </html>
 {{end}}
@@ -30,6 +30,7 @@ type Page struct {
 	ImgurSource string
 	Top         int
 	Bottom      int
+	Place       string
 }
 
 func DickButtHandler(res http.ResponseWriter, req *http.Request) {
@@ -38,6 +39,7 @@ func DickButtHandler(res http.ResponseWriter, req *http.Request) {
 		ImgurSource: ImgurSearcher(vars["place"]),
 		Top:         rand.Intn(80),
 		Bottom:      rand.Intn(80),
+		Place:       vars["place"],
 	}
 	fmt.Println(p)
 	templ, err := template.New("page").Parse(dickTemplate)
