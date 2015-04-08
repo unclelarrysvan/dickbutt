@@ -1,5 +1,18 @@
 {
 	"ImportPath": "dickbutt",
 	"GoVersion": "go1.4.2",
-	"Deps": []
+	"Deps": [
+		{
+			"ImportPath": "bitbucket.org/liamstask/go-imgur/imgur",
+			"Rev": "e8cbe1c75afe7779e56164be5efe1d10cc3d242f"
+		},
+		{
+			"ImportPath": "github.com/gorilla/context",
+			"Rev": "215affda49addc4c8ef7e2534915df2c8c35c6cd"
+		},
+		{
+			"ImportPath": "github.com/gorilla/mux",
+			"Rev": "8096f47503459bcc74d1f4c487b7e6e42e5746b5"
+		}
+	]
 }
